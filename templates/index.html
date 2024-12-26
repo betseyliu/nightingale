@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="relative h-[70vh] flex items-center overflow-hidden bg-gray-900">
+    <div class="absolute inset-0 z-0">
+        <img src="{{ hero_content.image_url }}"
+             alt="Florence Nightingale Portrait"
+             class="w-full h-full object-cover opacity-30">
+    </div>
+    <div class="container mx-auto px-4 z-10">
+        <div class="max-w-3xl">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-4 animate-fade-in">
+                {{ hero_content.title }}
+            </h1>
+            <h2 class="text-2xl md:text-3xl text-gray-200 mb-6 animate-fade-in-delay">
+                {{ hero_content.subtitle }}
+            </h2>
+            <p class="text-lg md:text-xl text-gray-300 mb-8 animate-fade-in-delay-2">
+                {{ hero_content.description }}
+            </p>
+            <div class="flex flex-wrap gap-4 animate-fade-in-delay-3">
+                <a href="{{ url_for('views.timeline') }}"
+                   class="bg-white text-gray-900 px-6 py-3 rounded-lg hover:bg-gray-100 transition duration-300">
+                    Explore Timeline
+                </a>
+                <a href="{{ url_for('views.gallery') }}"
+                   class="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg hover:bg-white hover:text-gray-900 transition duration-300">
+                    View Gallery
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quick Facts Section -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Quick Facts</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {% for fact in quick_facts %}
+            <div class="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition duration-300 fact-card">
+                <div class="text-2xl font-bold text-blue-600 mb-2">{{ fact.year }}</div>
+                <p class="text-gray-700">{{ fact.fact }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="py-16 bg-gray-100">
+    <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">Discover More</h2>
+        <p class="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
+            Explore the life and legacy of Florence Nightingale through her quotes,
+            achievements, and lasting impact on modern healthcare.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+            <a href="{{ url_for('views.quotes') }}"
+               class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300">
+                Read Her Quotes
+            </a>
+            <a href="{{ url_for('views.impact') }}"
+               class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition duration-300">
+                Learn Her Impact
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/home.js') }}"></script>
+{% endblock %}

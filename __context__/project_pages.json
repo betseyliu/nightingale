@@ -1,0 +1,47 @@
+[
+  {
+    "page_name": "Home Page",
+    "page_path": "/index.html",
+    "priority": "high",
+    "page_description": "Main landing page featuring a hero section with Nightingale's portrait, brief introduction, and navigation menu to other sections. Includes responsive design and mobile-friendly navigation.",
+    "related_apis": [],
+    "is_done": true,
+    "is_reviewed": true
+  },
+  {
+    "page_name": "Timeline",
+    "page_path": "/timeline.html",
+    "priority": "high",
+    "page_description": "Interactive timeline showing at least 10 key events in Nightingale's life from 1820-1910. Features vertical scrolling timeline with event cards containing dates, descriptions, and optional images.",
+    "related_apis": [],
+    "is_done": true,
+    "is_reviewed": true
+  },
+  {
+    "page_name": "Gallery",
+    "page_path": "/gallery.html",
+    "priority": "medium",
+    "page_description": "Responsive image gallery featuring at least 15 historical photos, manuscripts, and related images. Includes image captions and optional lightbox functionality for enlarged viewing.",
+    "related_apis": [],
+    "is_done": true,
+    "is_reviewed": true
+  },
+  {
+    "page_name": "Quotes",
+    "page_path": "/quotes.html",
+    "priority": "medium",
+    "page_description": "Collection of at least 20 famous quotes by Nightingale, displayed in card format with sources and context. May include categorization and filtering options.",
+    "related_apis": [],
+    "is_done": true,
+    "is_reviewed": true
+  },
+  {
+    "page_name": "Impact",
+    "page_path": "/impact.html",
+    "priority": "high",
+    "page_description": "Comprehensive article (2000-3000 words) detailing Nightingale's influence on modern nursing, including sections on education, hospital management, public health, ethics, statistics, and international influence. Features supporting images and references.",
+    "related_apis": [],
+    "is_done": true,
+    "is_reviewed": true
+  }
+]

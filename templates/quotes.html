@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}Famous Quotes - Florence Nightingale{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 py-8">
+    <!-- Header Section -->
+    <div class="text-center mb-16">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Florence Nightingale's Famous Quotes</h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Explore the wisdom and insights of Florence Nightingale through her most memorable quotes,
+            reflecting her thoughts on nursing, healthcare, and life.
+        </p>
+    </div>
+
+    <!-- Category Filter -->
+    <div class="flex flex-wrap justify-center gap-2 mb-8">
+        <button class="category-filter active px-4 py-2 rounded-full bg-blue-500 text-white hover:bg-blue-600 transition-colors"
+                data-category="all">
+            All Quotes
+        </button>
+        <button class="category-filter px-4 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors"
+                data-category="Nursing">
+            Nursing
+        </button>
+        <button class="category-filter px-4 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors"
+                data-category="Healthcare">
+            Healthcare
+        </button>
+        <button class="category-filter px-4 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors"
+                data-category="Leadership">
+            Leadership
+        </button>
+        <button class="category-filter px-4 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors"
+                data-category="Personal Philosophy">
+            Philosophy
+        </button>
+    </div>
+
+    <!-- Quotes Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% for quote in quotes %}
+        <div class="quote-card opacity-0 transform translate-y-4 transition-all duration-500"
+             data-category="{{ quote.category }}">
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden h-full hover:shadow-xl transition-shadow duration-300">
+                <div class="p-6 flex flex-col h-full">
+                    <div class="flex-grow">
+                        <blockquote class="text-lg text-gray-800 mb-4 italic">
+                            "{{ quote.quote }}"
+                        </blockquote>
+                        <p class="text-sm text-gray-600 mb-2">
+                            <span class="font-semibold">Context:</span> {{ quote.context }}
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-gray-200">
+                        <p class="text-sm text-gray-500">
+                            <span class="font-semibold">Source:</span> {{ quote.source }}
+                        </p>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-sm text-blue-600">{{ quote.year }}</span>
+                            <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded">
+                                {{ quote.category }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- No Results Message -->
+    <div id="no-results" class="hidden text-center py-8">
+        <p class="text-gray-600 text-lg">No quotes found for this category.</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/quotes.js') }}"></script>
+{% endblock %}

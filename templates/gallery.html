@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}Historical Gallery - Florence Nightingale{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 py-8">
+    <!-- Header Section -->
+    <div class="text-center mb-16">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Historical Gallery</h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Explore the life and work of Florence Nightingale through this collection of historical photographs,
+            manuscripts, and related images that document her remarkable journey and lasting legacy.
+        </p>
+    </div>
+
+    <!-- Category Filter -->
+    <div class="flex flex-wrap justify-center gap-2 mb-8">
+        <button class="category-filter active px-4 py-2 rounded-full bg-blue-500 text-white hover:bg-blue-600 transition-colors"
+                data-category="all">
+            All
+        </button>
+        <button class="category-filter px-4 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors"
+                data-category="portraits">
+            Portraits
+        </button>
+        <button class="category-filter px-4 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors"
+                data-category="locations">
+            Locations
+        </button>
+        <button class="category-filter px-4 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors"
+                data-category="crimean_war">
+            Crimean War
+        </button>
+        <button class="category-filter px-4 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors"
+                data-category="documents">
+            Documents
+        </button>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% for item in gallery_items %}
+        <div class="gallery-item opacity-0 transform translate-y-4 transition-all duration-500"
+             data-category="{{ item.category }}">
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="relative aspect-w-4 aspect-h-3 cursor-pointer gallery-image-container"
+                     data-image-url="{{ item.image_url }}"
+                     data-title="{{ item.title }}">
+                    <img src="{{ item.image_url }}"
+                         alt="{{ item.title }}"
+                         class="w-full h-full object-cover transform transition-transform duration-300 hover:scale-105">
+                    <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-20 transition-opacity duration-300"></div>
+                </div>
+                <div class="p-4">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">{{ item.title }}</h3>
+                    <p class="text-gray-600">{{ item.description }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden">
+        <div class="absolute top-4 right-4">
+            <button id="closeLightbox" class="text-white text-4xl hover:text-gray-300">&times;</button>
+        </div>
+        <div class="flex items-center justify-center h-full">
+            <div class="max-w-4xl mx-auto px-4">
+                <img id="lightboxImage" src="" alt="" class="max-h-[80vh] mx-auto">
+                <h3 id="lightboxTitle" class="text-white text-xl font-semibold text-center mt-4"></h3>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/gallery.js') }}"></script>
+{% endblock %}
